@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Movie Catalogue</string>
+    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
+    <string name="search">Search</string>
+    <string name="settings">Settings</string>
+    <string name="search_hint">Search movie…</string>
+    <string name="must_implement">Must implement Callback Interface</string>
+    <string name="setting_language_key" translatable="false">lang</string>
+    <string name="setting_language_label">Set Language</string>
+    <string name="settings_language_def" translatable="false">en</string>
+    <string name="pref_title">Settings</string>
+    <string name="upcoming">UPCOMING</string>
+    <string name="now_play">NOW PLAYING</string>
+    <string name="language_setting">Language Setting</string>
+</resources>

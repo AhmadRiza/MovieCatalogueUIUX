@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Katalog Film</string>
+    <string name="search">Cari</string>
+    <string name="settings">Pengaturan</string>
+    <string name="search_hint">Cari film…</string>
+    <string name="must_implement">Harus implementasi antarmuka</string>
+    <string name="setting_language_label">Set Bahasa</string>
+    <string name="pref_title">Pengaturan</string>
+    <string name="upcoming">AKAN DATANG</string>
+    <string name="now_play">DIPUTAR</string>
+    <string name="language_setting">Pengaturan bahasa</string>
+</resources>
