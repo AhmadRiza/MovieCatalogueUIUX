@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.riza.moviecatalogueuiux">
-
-    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <permission android:name="com.example.riza.moviecatalogueuiux.READ_DATABASE" android:protectionLevel="normal"/>
+    <permission android:name="com.example.riza.moviecatalogueuiux.WRITE_DATABASE" android:protectionLevel="normal"/>
 
     <application
         android:allowBackup="true"
@@ -19,11 +20,23 @@
             </intent-filter>
         </activity>
         <activity
-            android:parentActivityName=".ui.main.MainActivity"
             android:name=".ui.details.DetailsActivity"
-            android:theme="@style/MyMaterialTheme.TransparentStatusBar" />
-        <activity android:name=".ui.search.SearchActivity" />
-
+            android:theme="@style/MyMaterialTheme.TransparentStatusBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.main.MainActivity" />
+        </activity>
+        <activity android:name=".ui.search.SearchActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.main.MainActivity" />
+        </activity>
+        <provider
+            android:authorities="com.example.riza.moviecatalogueuiux"
+            android:name=".data.provider.MovieProvider"
+            android:exported="true"
+            android:readPermission="com.example.riza.moviecatalogueuiux.READ_DATABASE"
+            android:writePermission="com.example.riza.moviecatalogueuiux.WRITE_DATABASE" />
     </application>
 
 </manifest>

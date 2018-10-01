@@ -1,10 +1,10 @@
 package com.example.riza.moviecatalogueuiux.data.model;
 
+import android.database.Cursor;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.example.riza.moviecatalogueuiux.data.db.DBContract;
 
 /**
  * Created by riza on 09/08/18.
@@ -12,23 +12,43 @@ import java.util.List;
 
 public class Movie implements Parcelable {
 
+    private int id;
     private String title;
     private String date;
     private String rating;
-    private String describtion;
+    private String desc;
     private String imgSource;
     private String  genres;
 
-    public Movie(String title, String date, String rating, String descriprion, String imgSource, String genres) {
+    public Movie(int id,String title, String date, String rating, String desc, String imgSource, String genres) {
+        this.id = id;
         this.title = title;
         this.date = date;
         this.rating = rating;
-        this.describtion = descriprion;
+        this.desc = desc;
         this.imgSource = imgSource;
         this.genres = genres;
     }
 
     public Movie() {
+    }
+
+    public Movie(Cursor cursor){
+        this.id = DBContract.getColumnInt(cursor, DBContract.MovieTable._ID);
+        this.title = DBContract.getColumnString(cursor, DBContract.MovieTable.TITLE);
+        this.date = DBContract.getColumnString(cursor, DBContract.MovieTable.DATE);
+        this.desc = DBContract.getColumnString(cursor, DBContract.MovieTable.DESC);
+        this.rating = DBContract.getColumnString(cursor, DBContract.MovieTable.RATING);
+        this.imgSource = DBContract.getColumnString(cursor, DBContract.MovieTable.IMG);
+        this.genres = DBContract.getColumnString(cursor, DBContract.MovieTable.GENRES);
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getTitle() {
@@ -43,8 +63,8 @@ public class Movie implements Parcelable {
         return rating;
     }
 
-    public String getDescribtion() {
-        return describtion;
+    public String getDesc() {
+        return desc;
     }
 
     public String getImgSource() {
@@ -67,8 +87,8 @@ public class Movie implements Parcelable {
         this.rating = rating;
     }
 
-    public void setDescribtion(String describtion) {
-        this.describtion = describtion;
+    public void setDesc(String desc) {
+        this.desc = desc;
     }
 
     public void setImgSource(String imgSource) {
@@ -79,7 +99,6 @@ public class Movie implements Parcelable {
         this.genres = genres;
     }
 
-
     @Override
     public int describeContents() {
         return 0;
@@ -87,24 +106,26 @@ public class Movie implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(this.id);
         dest.writeString(this.title);
         dest.writeString(this.date);
         dest.writeString(this.rating);
-        dest.writeString(this.describtion);
+        dest.writeString(this.desc);
         dest.writeString(this.imgSource);
         dest.writeString(this.genres);
     }
 
     protected Movie(Parcel in) {
+        this.id = in.readInt();
         this.title = in.readString();
         this.date = in.readString();
         this.rating = in.readString();
-        this.describtion = in.readString();
+        this.desc = in.readString();
         this.imgSource = in.readString();
         this.genres = in.readString();
     }
 
-    public static final Creator<Movie> CREATOR = new Creator<Movie>() {
+    public static final Parcelable.Creator<Movie> CREATOR = new Parcelable.Creator<Movie>() {
         @Override
         public Movie createFromParcel(Parcel source) {
             return new Movie(source);

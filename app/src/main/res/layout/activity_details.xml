@@ -49,6 +49,18 @@
 
     </android.support.design.widget.AppBarLayout>
 
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="32dp"
+        app:backgroundTint="@color/colorFav"
+        app:fabSize="normal"
+        android:layout_gravity="bottom|right|end"
+        android:src="@drawable/ic_favorite"
+        />
+
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -70,6 +82,7 @@
                 android:paddingBottom="8dp"
                 android:paddingStart="8dp"
                 android:paddingEnd="16dp"
+                android:layout_marginEnd="10dp"
                 android:orientation="horizontal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
@@ -90,7 +103,7 @@
 
             </LinearLayout>
             <LinearLayout
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="10dp"
                 android:background="@drawable/bg_date"
                 android:paddingTop="8dp"
                 android:paddingBottom="8dp"
@@ -117,7 +130,7 @@
             </LinearLayout>
             <TextView
                 android:id="@+id/tv_detail_genre"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 tools:text="#Action #Comedy #Romance"
@@ -127,7 +140,7 @@
                 />
             <TextView
                 android:id="@+id/tv_detail_desc"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 tools:text="Lorem Ipsum dolor sit amet, amit amit dah gua nggak hafal."

@@ -1,7 +1,6 @@
-package com.example.riza.moviecatalogueuiux.data;
+package com.example.riza.moviecatalogueuiux.data.network;
 
 import android.content.Context;
-import android.support.annotation.Nullable;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -75,11 +74,12 @@ public class Repository {
                         JSONObject movieJson = movieJSONList.getJSONObject(i);
 
                         Movie movie = new Movie();
+                        movie.setId(movieJson.getInt("id"));
                         movie.setTitle(movieJson.getString("title"));
                         movie.setImgSource(movieJson.getString("poster_path"));
                         movie.setDate(movieJson.getString("release_date"));
                         movie.setRating(movieJson.getString("vote_average"));
-                        movie.setDescribtion(movieJson.getString("overview"));
+                        movie.setDesc(movieJson.getString("overview"));
 
                         JSONArray genreJson = movieJson.getJSONArray("genre_ids");
 

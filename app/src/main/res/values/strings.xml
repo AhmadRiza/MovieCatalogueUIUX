@@ -10,6 +10,9 @@
     <string name="settings_language_def" translatable="false">en</string>
     <string name="pref_title">Settings</string>
     <string name="upcoming">UPCOMING</string>
-    <string name="now_play">NOW PLAYING</string>
+    <string name="now_play">PLAYING</string>
     <string name="language_setting">Language Setting</string>
+    <string name="add_favorite">%s added into favorite</string>
+    <string name="favorite">FAVORITE</string>
+    <string name="remove_fav">%s removed from favorite</string>
 </resources>

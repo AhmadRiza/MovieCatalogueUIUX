@@ -10,4 +10,7 @@
     <string name="upcoming">AKAN DATANG</string>
     <string name="now_play">DIPUTAR</string>
     <string name="language_setting">Pengaturan bahasa</string>
+    <string name="favorite">FAVORIT</string>
+    <string name="add_favorite">%s ditambahkan di favorit</string>
+    <string name="remove_fav">%s dihapus dari favorit</string>
 </resources>

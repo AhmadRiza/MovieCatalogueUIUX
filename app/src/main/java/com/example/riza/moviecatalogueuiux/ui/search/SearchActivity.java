@@ -15,14 +15,13 @@ import android.view.MenuInflater;
 import android.widget.Toast;
 
 import com.example.riza.moviecatalogueuiux.R;
-import com.example.riza.moviecatalogueuiux.data.Repository;
-import com.example.riza.moviecatalogueuiux.data.RequestCallback;
+import com.example.riza.moviecatalogueuiux.data.network.Repository;
+import com.example.riza.moviecatalogueuiux.data.network.RequestCallback;
 import com.example.riza.moviecatalogueuiux.data.model.Movie;
 import com.example.riza.moviecatalogueuiux.ui.adapter.ItemClickListener;
 import com.example.riza.moviecatalogueuiux.ui.adapter.MovieAdapter;
 import com.example.riza.moviecatalogueuiux.ui.details.DetailsActivity;
 import com.example.riza.moviecatalogueuiux.ui.main.MainActivity;
-import com.example.riza.moviecatalogueuiux.utils.AppUtils;
 
 import java.util.ArrayList;
 

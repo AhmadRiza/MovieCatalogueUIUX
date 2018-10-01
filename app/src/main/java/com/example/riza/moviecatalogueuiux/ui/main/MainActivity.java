@@ -13,10 +13,11 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 
 import com.example.riza.moviecatalogueuiux.R;
-import com.example.riza.moviecatalogueuiux.data.Repository;
+import com.example.riza.moviecatalogueuiux.data.network.Repository;
 import com.example.riza.moviecatalogueuiux.data.model.Movie;
 import com.example.riza.moviecatalogueuiux.ui.adapter.PagerAdapter;
 import com.example.riza.moviecatalogueuiux.ui.details.DetailsActivity;
+import com.example.riza.moviecatalogueuiux.ui.main.favorite.FavoriteFragment;
 import com.example.riza.moviecatalogueuiux.ui.main.movielist.MovieListCallback;
 import com.example.riza.moviecatalogueuiux.ui.main.movielist.MovieListFragment;
 import com.example.riza.moviecatalogueuiux.ui.search.SearchActivity;
@@ -36,6 +37,7 @@ public class MainActivity extends AppCompatActivity implements MovieListCallback
     @BindView(R.id.viewpager) ViewPager viewPager;
     @BindView(R.id.tabs) TabLayout tabLayout;
 
+    private PagerAdapter pagerAdapter;
     private Unbinder unbinder;
 
     @Override
@@ -94,27 +96,25 @@ public class MainActivity extends AppCompatActivity implements MovieListCallback
         return false;
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-    }
-
     private void setupViewPager() {
-        PagerAdapter adapter = new PagerAdapter(getSupportFragmentManager());
+        pagerAdapter = new PagerAdapter(getSupportFragmentManager());
         Bundle bundle = new Bundle();
-        bundle.putInt(TYPE_EXTRA, Repository.UPCOMING);
-        adapter.addFragment(MovieListFragment.newInstance(bundle), getString(R.string.upcoming));
-        bundle = new Bundle();
         bundle.putInt(TYPE_EXTRA,Repository.NOW_PLAYING);
-        adapter.addFragment(MovieListFragment.newInstance(bundle),getString(R.string.now_play));
-        viewPager.setAdapter(adapter);
+        pagerAdapter.addFragment(MovieListFragment.newInstance(bundle),getString(R.string.now_play));
+        bundle = new Bundle();
+        bundle.putInt(TYPE_EXTRA, Repository.UPCOMING);
+        pagerAdapter.addFragment(MovieListFragment.newInstance(bundle), getString(R.string.upcoming));
+        pagerAdapter.addFragment(new FavoriteFragment(),getString(R.string.favorite));
+
+        viewPager.setAdapter(pagerAdapter);
+
     }
 
     @Override
     public void onMovieClick(Movie movie) {
         Intent intent = new Intent(this, DetailsActivity.class);
         intent.putExtra(MOVIE_EXTRA,movie);
-        startActivity(intent);
+        startActivityForResult(intent,DetailsActivity.REQUEST_CODE);
     }
 
     @Override
@@ -122,4 +122,5 @@ public class MainActivity extends AppCompatActivity implements MovieListCallback
         unbinder.unbind();
         super.onDestroy();
     }
+
 }

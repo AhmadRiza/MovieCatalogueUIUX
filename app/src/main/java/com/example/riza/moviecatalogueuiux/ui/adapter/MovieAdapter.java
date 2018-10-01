@@ -71,7 +71,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.GridViewHold
         holder.tvTitle.setText(String.format("%s (%s)",curItem.getTitle(),AppUtils.formatYear(curItem.getDate())));
         holder.tvGenre.setText(curItem.getGenres());
         holder.tvRating.setText(String.format("%s/10", curItem.getRating()));
-        holder.tvDesc.setText(String.format("%s...", AppUtils.formatDesc(curItem.getDescribtion())));
+        holder.tvDesc.setText(String.format("%s...", AppUtils.formatDesc(curItem.getDesc())));
         Glide.with(context)
                 .load("http://image.tmdb.org/t/p/w185"+curItem.getImgSource())
                 .apply(new RequestOptions().transforms(new CenterCrop(), new RoundedCorners(6)))

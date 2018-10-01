@@ -14,15 +14,14 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.example.riza.moviecatalogueuiux.R;
-import com.example.riza.moviecatalogueuiux.data.Repository;
-import com.example.riza.moviecatalogueuiux.data.RequestCallback;
+import com.example.riza.moviecatalogueuiux.data.network.Repository;
+import com.example.riza.moviecatalogueuiux.data.network.RequestCallback;
 import com.example.riza.moviecatalogueuiux.data.model.Movie;
 import com.example.riza.moviecatalogueuiux.ui.adapter.ItemClickListener;
 import com.example.riza.moviecatalogueuiux.ui.adapter.MovieAdapter;
 import com.example.riza.moviecatalogueuiux.ui.main.MainActivity;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -124,7 +123,6 @@ public class MovieListFragment extends Fragment {
             Toast.makeText(context, R.string.must_implement, Toast.LENGTH_SHORT).show();
         }
     }
-
 
     public void loadData(){
         refreshLayout.setRefreshing(true);

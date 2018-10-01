@@ -1,4 +1,4 @@
-package com.example.riza.moviecatalogueuiux.data;
+package com.example.riza.moviecatalogueuiux.data.network;
 
 import com.example.riza.moviecatalogueuiux.data.model.Movie;
 
