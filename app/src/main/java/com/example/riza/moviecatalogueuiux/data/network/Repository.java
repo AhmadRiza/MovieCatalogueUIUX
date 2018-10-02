@@ -107,7 +107,7 @@ public class Repository {
 
             @Override
             public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-                callback.onError(new String(responseBody));
+//                callback.onError(new String(responseBody));
             }
         });
 
@@ -151,7 +151,7 @@ public class Repository {
 
             @Override
             public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-                Log.e(TAG, new String(responseBody));
+//                Log.e(TAG, new String(responseBody));
             }
         });
 

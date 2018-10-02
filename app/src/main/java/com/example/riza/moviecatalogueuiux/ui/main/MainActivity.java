@@ -15,12 +15,14 @@ import android.view.MenuItem;
 import com.example.riza.moviecatalogueuiux.R;
 import com.example.riza.moviecatalogueuiux.data.network.Repository;
 import com.example.riza.moviecatalogueuiux.data.model.Movie;
+import com.example.riza.moviecatalogueuiux.data.prefs.MyPreference;
 import com.example.riza.moviecatalogueuiux.ui.adapter.PagerAdapter;
 import com.example.riza.moviecatalogueuiux.ui.details.DetailsActivity;
 import com.example.riza.moviecatalogueuiux.ui.main.favorite.FavoriteFragment;
 import com.example.riza.moviecatalogueuiux.ui.main.movielist.MovieListCallback;
 import com.example.riza.moviecatalogueuiux.ui.main.movielist.MovieListFragment;
 import com.example.riza.moviecatalogueuiux.ui.search.SearchActivity;
+import com.example.riza.moviecatalogueuiux.utils.AlarmHelper;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -39,6 +41,8 @@ public class MainActivity extends AppCompatActivity implements MovieListCallback
 
     private PagerAdapter pagerAdapter;
     private Unbinder unbinder;
+    private AlarmHelper alarmHelper;
+    private MyPreference myPreference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +58,21 @@ public class MainActivity extends AppCompatActivity implements MovieListCallback
         setupViewPager();
 
         tabLayout.setupWithViewPager(viewPager);
+        alarmHelper = new AlarmHelper(this);
+        myPreference = new MyPreference(this);
+
+        if(myPreference.isFirstLaunch()){
+//            alarmHelper.setDailyReminder(false);
+
+            myPreference.setisFirstLaunch(false);
+            if(!alarmHelper.isDailySet()){
+                alarmHelper.setDailyReminder(true);
+            }
+
+//            todo release
+
+        }
+
 
     }
 

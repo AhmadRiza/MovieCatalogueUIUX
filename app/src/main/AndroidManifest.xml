@@ -37,6 +37,13 @@
             android:exported="true"
             android:readPermission="com.example.riza.moviecatalogueuiux.READ_DATABASE"
             android:writePermission="com.example.riza.moviecatalogueuiux.WRITE_DATABASE" />
+
+
+        <receiver
+            android:name=".receiver.AlarmReceiver"
+            android:enabled="true"
+            android:exported="true"/>
+
     </application>
 
 </manifest>

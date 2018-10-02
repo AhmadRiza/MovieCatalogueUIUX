@@ -2,6 +2,7 @@ package com.example.riza.moviecatalogueuiux.ui.details;
 
 import android.content.Intent;
 import android.content.res.ColorStateList;
+import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
@@ -33,6 +34,7 @@ public class DetailsActivity extends AppCompatActivity {
 
     private Unbinder unbinder;
     private Movie movie;
+    Cursor query;
     private boolean isFavorite = false;
 
     @BindView(R.id.collapsing_toolbar) CollapsingToolbarLayout collapsingToolbarLayout;
@@ -57,7 +59,8 @@ public class DetailsActivity extends AppCompatActivity {
         if(movie!=null){
             setView(movie);
             Uri uri = Uri.parse(CONTENT_URI+"/"+movie.getId());
-            if(getContentResolver().query(uri,null,null,null,null, null).moveToFirst()){
+            query = getContentResolver().query(uri,null,null,null,null, null);
+            if(query.moveToFirst()){
                 isFavorite = true;
             }else{
                 fab.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.colorUnFav)));
@@ -111,6 +114,9 @@ public class DetailsActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         unbinder.unbind();
+        if(query!=null){
+            query.close();
+        }
         super.onDestroy();
     }
 
