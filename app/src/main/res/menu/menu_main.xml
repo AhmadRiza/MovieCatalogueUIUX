@@ -9,5 +9,11 @@
     <group android:menuCategory="container">
         <item android:id="@+id/setting"
             android:title="@string/language_setting" />
+        <item android:id="@+id/daily_reminder"
+            android:title="Daily Reminder"
+            />
+        <item android:id="@+id/release_reminder"
+            android:title="Release Reminder"
+            />
     </group>
 </menu>

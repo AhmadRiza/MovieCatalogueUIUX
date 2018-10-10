@@ -9,7 +9,7 @@ public class AlarmHelper {
     private AlarmReceiver alarmReceiver;
     private Context context;
 
-    private static final String DAILY_TIME = "15:08";
+    private static final String DAILY_TIME = "12:27";
     private static final String RELEASE_TIME = "08:00";
 
     public AlarmHelper(Context context) {

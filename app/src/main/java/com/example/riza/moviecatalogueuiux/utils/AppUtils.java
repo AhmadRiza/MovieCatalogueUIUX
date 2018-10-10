@@ -46,4 +46,11 @@ public class AppUtils {
         return (desc.length()>70)? desc.substring(0,70):desc;
     }
 
+
+    public static boolean isToday(String date){
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        Date today = new Date();
+        String todayString = formatter.format(today);
+        return TextUtils.equals(date, todayString);
+    }
 }

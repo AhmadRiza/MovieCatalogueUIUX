@@ -19,6 +19,8 @@ import com.example.riza.moviecatalogueuiux.R;
 import com.example.riza.moviecatalogueuiux.data.model.Movie;
 import com.example.riza.moviecatalogueuiux.data.network.Repository;
 import com.example.riza.moviecatalogueuiux.data.network.RequestCallback;
+import com.example.riza.moviecatalogueuiux.ui.main.MainActivity;
+import com.example.riza.moviecatalogueuiux.utils.AppUtils;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -41,11 +43,11 @@ public class AlarmReceiver extends BroadcastReceiver {
     }
 
     @Override
-    public void onReceive(Context context, Intent intent) {
+    public void onReceive(final Context context, Intent intent) {
         String type = intent.getStringExtra(EXTRA_TYPE);
 
         String title = type.equalsIgnoreCase(TYPE_DAILY) ? TYPE_DAILY : TYPE_RELEASE;
-        int notifId = type.equalsIgnoreCase(TYPE_DAILY) ? ID_DAILY : ID_RELEASE;
+        final int notifId = type.equalsIgnoreCase(TYPE_DAILY) ? ID_DAILY : ID_RELEASE;
 
 //        showToast(context, title, message);
 
@@ -55,6 +57,14 @@ public class AlarmReceiver extends BroadcastReceiver {
             repository.getMovie(Repository.NOW_PLAYING, null, new RequestCallback() {
                 @Override
                 public void onSucess(ArrayList<Movie> movies) {
+
+                    for(Movie m : movies){
+                        if(AppUtils.isToday(m.getDate())){
+                            showAlarmNotification(context, context.getString(R.string.app_name),m.getTitle()+" is released today!", notifId);
+                            break;
+                        }
+                    }
+
 
                 }
 
@@ -87,10 +97,15 @@ public class AlarmReceiver extends BroadcastReceiver {
                 .setSmallIcon(R.drawable.ic_movie_black_24dp)
                 .setContentTitle(title)
                 .setContentText(message)
+                .setAutoCancel(true)
                 .setColor(ContextCompat.getColor(context, android.R.color.transparent))
                 .setVibrate(new long[]{1000, 1000, 1000, 1000, 1000})
                 .setSound(alarmSound);
 
+        
+        PendingIntent contentIntent =
+                PendingIntent.getActivity(context, 0, new Intent(context, MainActivity.class), 0);
+        builder.setContentIntent(contentIntent);
         /*
         Untuk android Oreo ke atas perlu menambahkan notification channel
         Materi ini akan dibahas lebih lanjut di modul extended

@@ -62,14 +62,20 @@ public class MainActivity extends AppCompatActivity implements MovieListCallback
         myPreference = new MyPreference(this);
 
         if(myPreference.isFirstLaunch()){
-//            alarmHelper.setDailyReminder(false);
+
+            alarmHelper.setDailyReminder(false);
+            alarmHelper.setReleaseReminder(false);
 
             myPreference.setisFirstLaunch(false);
             if(!alarmHelper.isDailySet()){
                 alarmHelper.setDailyReminder(true);
             }
 
-//            todo release
+
+            if(!alarmHelper.isReleaseSet()){
+                alarmHelper.setReleaseReminder(true);
+            }
+
 
         }
 
@@ -101,6 +107,18 @@ public class MainActivity extends AppCompatActivity implements MovieListCallback
                 return false;
             }
         });
+
+        if(alarmHelper.isDailySet()){
+            menu.getItem(2).setTitle("Disable Daily Reminder");
+        }else{
+            menu.getItem(2).setTitle("Enable Daily Reminder");
+        }
+        if(alarmHelper.isReleaseSet()){
+            menu.getItem(3).setTitle("Disable Release Reminder");
+        }else{
+            menu.getItem(3).setTitle("Enable Release Reminder");
+        }
+
         return true;
     }
 
@@ -110,6 +128,25 @@ public class MainActivity extends AppCompatActivity implements MovieListCallback
             case R.id.setting:
                 Intent mIntent = new Intent(Settings.ACTION_LOCALE_SETTINGS);
                 startActivity(mIntent);
+                break;
+            case R.id.daily_reminder:
+
+                if(alarmHelper.isDailySet()){
+                    alarmHelper.setDailyReminder(false);
+                    item.setTitle("Enable Daily Reminder");
+                }else{
+                    alarmHelper.setDailyReminder(true);
+                    item.setTitle("Disable Daily Reminder");
+                }
+                break;
+            case R.id.release_reminder:
+                if(alarmHelper.isReleaseSet()){
+                    alarmHelper.setReleaseReminder(false);
+                    item.setTitle("Enable Release Reminder");
+                }else{
+                    alarmHelper.setReleaseReminder(true);
+                    item.setTitle("Disable Release Reminder");
+                }
                 break;
         }
         return false;
