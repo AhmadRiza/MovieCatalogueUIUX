@@ -31,7 +31,7 @@ public class RepositorySync {
     public static final int NOW_PLAYING = 23;
     public static final int UPCOMING = 45;
 
-    private AsyncHttpClient mClient;
+    private SyncHttpClient mClient;
     private List<Genre> genres = new ArrayList<>();
 
     public RepositorySync() {
