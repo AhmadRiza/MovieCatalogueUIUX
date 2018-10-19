@@ -14,8 +14,6 @@ public class FavLoader extends AsyncTaskLoader<Cursor> {
     private Cursor mData;
     private boolean mHasResult = false;
 
-    private String mKumpulanKota;
-
     public FavLoader(final Context context) {
         super(context);
 
