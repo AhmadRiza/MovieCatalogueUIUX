@@ -19,8 +19,9 @@ public class Movie implements Parcelable {
     private String desc;
     private String imgSource;
     private String  genres;
+    private String imgLandscape;
 
-    public Movie(int id,String title, String date, String rating, String desc, String imgSource, String genres) {
+    public Movie(int id,String title, String date, String rating, String desc, String imgSource, String genres, String imgLandscape) {
         this.id = id;
         this.title = title;
         this.date = date;
@@ -28,6 +29,7 @@ public class Movie implements Parcelable {
         this.desc = desc;
         this.imgSource = imgSource;
         this.genres = genres;
+        this.imgLandscape = imgLandscape;
     }
 
     public Movie() {
@@ -41,6 +43,15 @@ public class Movie implements Parcelable {
         this.rating = DBContract.getColumnString(cursor, DBContract.MovieTable.RATING);
         this.imgSource = DBContract.getColumnString(cursor, DBContract.MovieTable.IMG);
         this.genres = DBContract.getColumnString(cursor, DBContract.MovieTable.GENRES);
+        this.imgLandscape = DBContract.getColumnString(cursor, DBContract.MovieTable.IMG_LANDSCAPE);
+    }
+
+    public void setImgLandscape(String imgLandscape) {
+        this.imgLandscape = imgLandscape;
+    }
+
+    public String getImgLandscape() {
+        return imgLandscape;
     }
 
     public int getId() {
@@ -113,6 +124,7 @@ public class Movie implements Parcelable {
         dest.writeString(this.desc);
         dest.writeString(this.imgSource);
         dest.writeString(this.genres);
+        dest.writeString(this.imgLandscape);
     }
 
     protected Movie(Parcel in) {
@@ -123,6 +135,7 @@ public class Movie implements Parcelable {
         this.desc = in.readString();
         this.imgSource = in.readString();
         this.genres = in.readString();
+        this.imgLandscape = in.readString();
     }
 
     public static final Parcelable.Creator<Movie> CREATOR = new Parcelable.Creator<Movie>() {

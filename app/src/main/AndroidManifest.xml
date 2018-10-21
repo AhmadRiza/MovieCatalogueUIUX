@@ -5,10 +5,10 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <permission
-        android:name="com.example.riza.moviecatalogueuiux.READ_DATABASE"
+        android:name="com.example.riza.moviecatalogue.READ_DATABASE"
         android:protectionLevel="normal" />
     <permission
-        android:name="com.example.riza.moviecatalogueuiux.WRITE_DATABASE"
+        android:name="com.example.riza.moviecatalogue.WRITE_DATABASE"
         android:protectionLevel="normal" />
 
     <application
@@ -40,10 +40,10 @@
 
         <provider
             android:name=".data.provider.MovieProvider"
-            android:authorities="com.example.riza.moviecatalogueuiux"
+            android:authorities="com.example.riza.moviecatalogue"
             android:exported="true"
-            android:readPermission="com.example.riza.moviecatalogueuiux.READ_DATABASE"
-            android:writePermission="com.example.riza.moviecatalogueuiux.WRITE_DATABASE" />
+            android:readPermission="com.example.riza.moviecatalogue.READ_DATABASE"
+            android:writePermission="com.example.riza.moviecatalogue.WRITE_DATABASE" />
 
         <receiver
             android:name=".receiver.AlarmReceiver"

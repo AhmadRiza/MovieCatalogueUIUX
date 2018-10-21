@@ -80,8 +80,9 @@ public class MovieDBHelper {
                 + DBContract.MovieTable.DESC + ", "
                 + DBContract.MovieTable.RATING + ", "
                 + DBContract.MovieTable.GENRES + ", "
-                + DBContract.MovieTable.IMG
-                + ") VALUES (?, ?, ?, ?, ?, ?)";
+                + DBContract.MovieTable.IMG + ", "
+                + DBContract.MovieTable.IMG_LANDSCAPE
+                + ") VALUES (?, ?, ?, ?, ?, ?, ?)";
         SQLiteStatement stmt = database.compileStatement(sql);
         stmt.bindString(1, movie.getTitle());
         stmt.bindString(2, movie.getDate());
@@ -89,6 +90,7 @@ public class MovieDBHelper {
         stmt.bindString(4, movie.getRating());
         stmt.bindString(5, movie.getGenres());
         stmt.bindString(6, movie.getImgSource());
+        stmt.bindString(7, movie.getImgLandscape());
         stmt.execute();
         stmt.clearBindings();
 
@@ -102,6 +104,7 @@ public class MovieDBHelper {
         args.put(DBContract.MovieTable.RATING, word.getRating());
         args.put(DBContract.MovieTable.GENRES, word.getGenres());
         args.put(DBContract.MovieTable.IMG, word.getImgSource());
+        args.put(DBContract.MovieTable.IMG_LANDSCAPE, word.getImgLandscape());
         return database.update(DBContract.TABLE_MOVIE, args, DBContract.MovieTable._ID + "= '" + word.getId() + "'", null);
     }
 

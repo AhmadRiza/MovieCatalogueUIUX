@@ -32,7 +32,6 @@ import java.util.Locale;
 public class AlarmReceiver extends BroadcastReceiver {
     public static final String TYPE_DAILY = "DailyAlarm";
     public static final String TYPE_RELEASE = "ReleaseAlarm";
-    public static final String EXTRA_MESSAGE = "message";
     public static final String EXTRA_TYPE = "type";
 
     // Siapkan 2 id untuk 2 macam alarm, onetime dna repeating
@@ -46,7 +45,6 @@ public class AlarmReceiver extends BroadcastReceiver {
     public void onReceive(final Context context, Intent intent) {
         String type = intent.getStringExtra(EXTRA_TYPE);
 
-        String title = type.equalsIgnoreCase(TYPE_DAILY) ? TYPE_DAILY : TYPE_RELEASE;
         final int notifId = type.equalsIgnoreCase(TYPE_DAILY) ? ID_DAILY : ID_RELEASE;
 
 //        showToast(context, title, message);
@@ -78,12 +76,6 @@ public class AlarmReceiver extends BroadcastReceiver {
         }
 
 
-    }
-
-    // Gunakan metode ini untuk menampilkan toast
-
-    private void showToast(Context context, String title, String message) {
-        Toast.makeText(context, title + " : " + message, Toast.LENGTH_LONG).show();
     }
 
     // Gunakan metode ini untuk menampilkan notifikasi
@@ -161,8 +153,9 @@ public class AlarmReceiver extends BroadcastReceiver {
         if (alarmManager != null) {
             alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntent);
         }
+        String message = type.equalsIgnoreCase(TYPE_DAILY)?context.getString(R.string.daily_set):context.getString(R.string.release_set);
 
-        Toast.makeText(context, "Repeating alarm set up", Toast.LENGTH_SHORT).show();
+        Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
     }
 
 
@@ -177,7 +170,9 @@ public class AlarmReceiver extends BroadcastReceiver {
             alarmManager.cancel(pendingIntent);
         }
 
-        Toast.makeText(context, "Repeating alarm dibatalkan", Toast.LENGTH_SHORT).show();
+        String message = type.equalsIgnoreCase(TYPE_DAILY)?context.getString(R.string.daily_cancel):context.getString(R.string.relase_cancel);
+
+        Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
     }
 
 
@@ -189,7 +184,6 @@ public class AlarmReceiver extends BroadcastReceiver {
         return PendingIntent.getBroadcast(context, requestCode, intent, PendingIntent.FLAG_NO_CREATE) != null;
     }
 
-    private String DATE_FORMAT = "yyyy-MM-dd";
     private String TIME_FORMAT = "HH:mm";
 
     // Metode ini digunakan untuk validasi date dan time

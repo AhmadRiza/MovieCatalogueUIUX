@@ -18,9 +18,6 @@ import com.example.riza.moviecatalogueuiux.R;
 import com.example.riza.moviecatalogueuiux.data.model.Movie;
 import com.example.riza.moviecatalogueuiux.utils.AppUtils;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -61,7 +58,7 @@ public class MovieCursorAdapter extends RecyclerView.Adapter<MovieCursorAdapter.
             @Override
             public void onClick(View view) {
                 if(mListener!=null){
-                    mListener.onClick(view,mHolder.getPosition());
+                    mListener.onClick(mHolder.getPosition());
                 }
             }
         });

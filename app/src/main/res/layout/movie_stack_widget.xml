@@ -19,10 +19,9 @@
             android:layout_height="wrap_content"
             android:textAlignment="center"
             android:layout_gravity="center"
-            android:background="@color/colorPrimaryDark"
-            android:textColor="#ffffff"
+            android:textColor="@color/colorText"
             android:textStyle="bold"
-            android:text="@string/appwidget_text"
+            android:text="My Favorite Movie"
             android:textSize="20sp"
             android:layout_weight="1" />
     </LinearLayout>

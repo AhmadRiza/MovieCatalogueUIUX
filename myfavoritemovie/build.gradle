@@ -2,25 +2,22 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 28
-
-
-
     defaultConfig {
-        applicationId "com.example.myfavoritemovie"
+        applicationId 'com.riza.example.myfavoritemovie'
         minSdkVersion 21
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
 
     }
-
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-
+    productFlavors {
+    }
 }
 
 ext {
@@ -30,7 +27,7 @@ ext {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation "com.android.support:appcompat-v7:$supportLib"
     implementation "com.android.support:design:$supportLib"
     implementation "com.github.bumptech.glide:glide:$glide"

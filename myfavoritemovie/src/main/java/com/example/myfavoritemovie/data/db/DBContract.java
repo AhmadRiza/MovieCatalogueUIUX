@@ -25,7 +25,7 @@ public class DBContract {
         public static final String  GENRES = "genre";
     }
 
-    public static final String AUTHORITY = "com.example.riza.moviecatalogueuiux";
+    public static final String AUTHORITY = "com.example.riza.moviecatalogue";
 
     public static final Uri CONTENT_URI = new Uri.Builder().scheme("content")
             .authority(AUTHORITY)

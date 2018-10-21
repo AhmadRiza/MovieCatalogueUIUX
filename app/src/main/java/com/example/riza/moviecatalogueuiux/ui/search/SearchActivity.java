@@ -8,7 +8,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.view.MenuItem;
-import android.view.View;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -62,7 +61,7 @@ public class SearchActivity extends AppCompatActivity {
 
         adapter.setOnItemClickListener(new ItemClickListener() {
             @Override
-            public void onClick(View v, int position) {
+            public void onClick(int position) {
                 Intent intent = new Intent(SearchActivity.this, DetailsActivity.class);
                 intent.putExtra(MainActivity.MOVIE_EXTRA, adapter.getItem(position));
                 startActivity(intent);

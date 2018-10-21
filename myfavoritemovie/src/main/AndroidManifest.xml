@@ -3,8 +3,8 @@
     package="com.example.myfavoritemovie">
 
     <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="com.example.riza.moviecatalogueuiux.READ_DATABASE" />
-    <uses-permission android:name="com.example.riza.moviecatalogueuiux.WRITE_DATABASE" />
+    <uses-permission android:name="com.example.riza.moviecatalogue.READ_DATABASE" />
+    <uses-permission android:name="com.example.riza.moviecatalogue.WRITE_DATABASE" />
 
     <application
         android:allowBackup="true"

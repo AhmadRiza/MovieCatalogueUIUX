@@ -18,4 +18,8 @@
     <string name="appwidget_text">EXAMPLE</string>
     <string name="add_widget">Add widget</string>
     <string name="empty_text">No Movie Loaded</string>
+    <string name="daily_cancel">Daily alarm canceled!</string>
+    <string name="relase_cancel">Release alarm canceled!</string>
+    <string name="release_set">Release alarm set up</string>
+    <string name="daily_set">Daily alarm set up!</string>
 </resources>

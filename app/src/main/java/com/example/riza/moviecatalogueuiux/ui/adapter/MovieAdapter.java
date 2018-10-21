@@ -57,7 +57,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.GridViewHold
             @Override
             public void onClick(View view) {
                 if(mListener!=null){
-                    mListener.onClick(view,mHolder.getPosition());
+                    mListener.onClick(mHolder.getPosition());
                 }
             }
         });

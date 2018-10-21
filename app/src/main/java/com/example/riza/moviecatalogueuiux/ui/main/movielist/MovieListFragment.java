@@ -71,7 +71,7 @@ public class MovieListFragment extends Fragment {
 
         adapter.setOnItemClickListener(new ItemClickListener() {
             @Override
-            public void onClick(View v, int position) {
+            public void onClick(int position) {
                 mCallback.onMovieClick(adapter.getItem(position));
             }
         });

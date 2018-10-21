@@ -18,6 +18,7 @@ public class DBHelper extends SQLiteOpenHelper {
                     " %s TEXT NOT NULL," +
                     " %s TEXT NOT NULL," +
                     " %s TEXT NOT NULL," +
+                    " %s TEXT NOT NULL," +
                     " %s TEXT NOT NULL)",
             DBContract.TABLE_MOVIE,
             DBContract.MovieTable._ID,
@@ -26,7 +27,8 @@ public class DBHelper extends SQLiteOpenHelper {
             DBContract.MovieTable.DESC,
             DBContract.MovieTable.GENRES,
             DBContract.MovieTable.RATING,
-            DBContract.MovieTable.IMG
+            DBContract.MovieTable.IMG,
+            DBContract.MovieTable.IMG_LANDSCAPE
 
     );
     public DBHelper(Context context) {

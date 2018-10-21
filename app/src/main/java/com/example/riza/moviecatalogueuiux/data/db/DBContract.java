@@ -22,9 +22,10 @@ public class DBContract {
         public static final String DESC = "desc";
         public static final String IMG ="img";
         public static final String  GENRES = "genre";
+        public static final String IMG_LANDSCAPE = "img_landscape";
     }
 
-    public static final String AUTHORITY = "com.example.riza.moviecatalogueuiux";
+    public static final String AUTHORITY = "com.example.riza.moviecatalogue";
 
     public static final Uri CONTENT_URI = new Uri.Builder().scheme("content")
             .authority(AUTHORITY)
@@ -39,10 +40,6 @@ public class DBContract {
         return cursor.getInt( cursor.getColumnIndex(columnName) );
     }
 
-    public static long getColumnLong(Cursor cursor, String columnName) {
-        return cursor.getLong( cursor.getColumnIndex(columnName) );
-    }
-
     public static ContentValues getContentValues(Movie movie){
         ContentValues cv = new ContentValues();
         cv.put(MovieTable._ID,movie.getId());
@@ -52,6 +49,7 @@ public class DBContract {
         cv.put(MovieTable.DESC,movie.getDesc());
         cv.put(MovieTable.IMG,movie.getImgSource());
         cv.put(MovieTable.GENRES,movie.getGenres());
+        cv.put(MovieTable.IMG_LANDSCAPE,movie.getImgLandscape());
         return cv;
     }
 

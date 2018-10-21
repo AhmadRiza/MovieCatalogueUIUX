@@ -35,7 +35,6 @@ import butterknife.Unbinder;
 public class FavoriteFragment extends Fragment implements LoaderManager.LoaderCallbacks<Cursor>{
 
 
-    private static final String MOVIES_KEY = "moov";
     public static final String ACTION_ADDED_FAVORITE = "favfav";
 
     @BindView(R.id.rv_upcoming)
@@ -67,7 +66,7 @@ public class FavoriteFragment extends Fragment implements LoaderManager.LoaderCa
 
         adapter.setOnItemClickListener(new ItemClickListener() {
             @Override
-            public void onClick(View v, int position) {
+            public void onClick(int position) {
                 mCallback.onMovieClick(adapter.getItem(position));
             }
         });

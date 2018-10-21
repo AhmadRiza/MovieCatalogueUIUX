@@ -80,6 +80,7 @@ public class Repository {
                         movie.setDate(movieJson.getString("release_date"));
                         movie.setRating(movieJson.getString("vote_average"));
                         movie.setDesc(movieJson.getString("overview"));
+                        movie.setImgLandscape(movieJson.getString("backdrop_path"));
 
                         JSONArray genreJson = movieJson.getJSONArray("genre_ids");
 

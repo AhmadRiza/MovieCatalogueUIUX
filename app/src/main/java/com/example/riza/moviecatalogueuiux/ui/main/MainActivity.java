@@ -63,14 +63,10 @@ public class MainActivity extends AppCompatActivity implements MovieListCallback
 
         if(myPreference.isFirstLaunch()){
 
-            alarmHelper.setDailyReminder(false);
-            alarmHelper.setReleaseReminder(false);
-
             myPreference.setisFirstLaunch(false);
             if(!alarmHelper.isDailySet()){
                 alarmHelper.setDailyReminder(true);
             }
-
 
             if(!alarmHelper.isReleaseSet()){
                 alarmHelper.setReleaseReminder(true);

@@ -3,7 +3,7 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 28
     defaultConfig {
-        applicationId "com.example.riza.moviecatalogueuiux"
+        applicationId 'com.example.riza.moviecatalogue'
         minSdkVersion 21
         targetSdkVersion 28
         versionCode 1
@@ -19,6 +19,8 @@ android {
         it.buildConfigField('String', 'API_KEY', MC_TMDB_API_KEY)
     }
     buildToolsVersion '28.0.2'
+    productFlavors {
+    }
 }
 
 ext {
